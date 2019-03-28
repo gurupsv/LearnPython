@@ -20,3 +20,5 @@ print(power(2))
 print(power(2,3))
 print(power(x=3,num=4))
 print(power(1,2))
+
+print('Hello World'.lower())
