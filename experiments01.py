@@ -23,6 +23,11 @@ print(power(1,2))
 
 print('Hello World'.lower())
 
+x = 0x0a
+y = 0x03
+z = x >> y
+print('(bin) x is {:08b}, y is {:08b}, z is {:08b}'.format(x,y,z))
+
 h="Hello"
 h = h + " World"
 print(h)

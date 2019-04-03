@@ -1,15 +1,18 @@
 
-array=[4,2,6,8,3,1,9,5,7]
-print ("Original Array : ", array)
+def main():
+    myarray=[7,3,5,6,9,1,0,2,4,8]
+    print("Before Sort : ",myarray)
+    bubblesort(myarray)
+    print("After Sort : ",myarray)
 
-def bubblesort(array):
-    for i in range(len(array)-1,0,-1):
-        print ("After Round",i," : ", array)
+
+def bubblesort(arg):
+    for i in range(len(arg)-1,0,-1):
         for j in range(i):
-            if array[j] > array[j+1]:
-                temp=array[j]
-                array[j]=array[j+1]
-                array[j+1]=temp
+            if arg[j]<arg[j+1]:
+                temp=arg[j]
+                arg[j]=arg[j+1]
+                arg[j+1]=temp
 
-bubblesort(array)
-print ("Sorted Array : ", array)
+
+if __name__ == "__main__": main()
