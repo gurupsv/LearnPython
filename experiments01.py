@@ -22,3 +22,7 @@ print(power(x=3,num=4))
 print(power(1,2))
 
 print('Hello World'.lower())
+
+h="Hello"
+h = h + " World"
+print(h)
