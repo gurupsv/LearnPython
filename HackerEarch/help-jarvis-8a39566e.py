@@ -2,15 +2,29 @@
 
 no_trains = int(input())
 for i in range(no_trains):
-    mynum = int(input())
-    count=0
-    for i in range(1, 8):
-        if mynum > 10**(i-1):
-            if str(mynum).__contains__(str(i)):
-                count += 1
-        else:
+    mynum = input()
+    mylist=[int(i) for i in mynum]
+    mylist.sort()
+    trainPass=True
+    mylen=len(mylist)-1
+    for i in range(mylen):
+        if mylist[i]+1 != mylist[i+1]:
+            trainPass=False
             break
-    if count == i-1:
+    if trainPass:
         print("YES")
     else:
         print("NO")
+
+
+    # count=0
+    # for i in range(1, 9):
+    #     if mynum > 10**(i-1):
+    #         if str(mynum).__contains__(str(i)):
+    #             count += 1
+    #     else:
+    #         break
+    # if count == i-1:
+    #     print("YES")
+    # else:
+    #     print("NO")
