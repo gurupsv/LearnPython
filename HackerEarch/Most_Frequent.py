@@ -4,4 +4,3 @@ t = int(input())
 for i in range(t):
     m = Counter(input().split())
     print(m.most_common())
-
