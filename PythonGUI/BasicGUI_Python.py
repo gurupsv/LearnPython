@@ -11,10 +11,10 @@ class HelloApp:
 
 
     def bengaluru_hello(self):
-        self.label.config(text="Hegiddira, tkiner!")
+        self.label.config(text="Hegiddira, tkinter!")
 
     def mysuru_hello(self):
-        self.label.config(text="Namaskara, tkiner!")
+        self.label.config(text="Namaskara, tkinter!")
 
 
 def main():
