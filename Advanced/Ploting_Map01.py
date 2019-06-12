@@ -13,8 +13,18 @@ plt.title("sine wave form")
 plt.plot(x, y)
 plt.show()
 
+# create data
+x = np.random.rand(40)
+y = np.random.rand(40)
+z = np.random.rand(40)
+colors = np.random.rand(40) 
+# use the scatter function
+plt.scatter(x, y, s=z*1000,c=colors)
+plt.show()
+
+
 plt.figure(figsize=(10,5))
 world = Basemap()
-world.drawcoastlines(linewidth=0.25,color="red")
+world.drawcoastlines(linewidth=0.25)
 world.drawcountries(linewidth=0.25)
 plt.show()

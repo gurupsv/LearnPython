@@ -31,3 +31,15 @@ print(onlynumber)
 
 for i in range(0,10,2):
     print(i)
+
+thisset = {"apple", "banana", "cherry"}
+
+thisset.update(["orange", "mango", "grapes"])
+
+print(thisset)
+
+from collections import Counter
+
+m=Counter("This is just a test")
+print(m.most_common(3))
+print(m.keys())
