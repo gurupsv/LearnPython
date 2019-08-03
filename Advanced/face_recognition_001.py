@@ -3,10 +3,10 @@ import PIL.ImageDraw
 import face_recognition
 
 # Load the jpg file into a numpy array
-image = face_recognition.load_image_file("people2.jpg")
+image = face_recognition.load_image_file("_DSC4951.jpg")
 
 # Find all the faces in the image
-face_locations = face_recognition.face_locations(image)
+face_locations = face_recognition.face_locations(image,1)
 
 number_of_faces = len(face_locations)
 print("I found {} face(s) in this photograph.".format(number_of_faces))
@@ -22,7 +22,7 @@ for face_location in face_locations:
 
     # Let's draw a box around the face
     draw = PIL.ImageDraw.Draw(pil_image)
-    draw.rectangle([left, top, right, bottom], outline="red")
+    draw.rectangle([left, top, right, bottom], outline="green", width=2)
 
 # Display the image on screen
 pil_image.show()
