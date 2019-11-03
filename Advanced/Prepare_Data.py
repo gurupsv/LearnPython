@@ -16,6 +16,7 @@ medal =  collections.namedtuple('medal',['year','athlete','team','event'])
 medals = [medal(*line.strip().split('\t')) for line in open('goldmedals.txt','r')]
 
 
+
 with open('goldmedals.txt','w') as out:
     for i,row in allmedals[(medals['Discipline'] == 'Athletics') & (medals['Gold'] == 1)].iterrows():
         out.write(str(row['Year']) + '\t' + row['Athlete'] + '\t' + row['Team'] + '\t' + row['Event'] + '\n')
