@@ -87,6 +87,7 @@ try:
     tenancy = identity.get_tenancy(config["tenancy"]).data
     regions = identity.list_region_subscriptions(tenancy.id).data
     compute = oci.core.ComputeClient(config, signer=signer)
+    network = oci.core.VirtualNetworkClient(config, signer=signer)
 
     print("Tenant Name : " + str(tenancy.name))
     print("Tenant Id   : " + tenancy.id)
@@ -94,21 +95,31 @@ try:
 
     compartments = identity_read_compartments(identity, tenancy)
     computes = compute.list_images(tenancy.id)
+
 except Exception as e:
     raise RuntimeError("\nError extracting compartments section - " + str(e))
 
 print("===========================================================")
 for compartment in compartments:
-    print(str("Compartment  -> " + compartment.name))
+    networks = json.loads(str(network.list_vcns(compartment.id).data))
+
+    print(str("Compartment  -> " + compartment.name + "  -- " + compartment.id))
+    for nw1 in networks:
+        print("|-(VCN)-> " + nw1['display_name'] + " --> " + nw1['id'])
+        subnets = json.loads(str(network.list_subnets(compartment_id=compartment.id, vcn_id=nw1['id']).data))
+        for sn in subnets:
+            print("  |-(SubNet)-> "+sn['display_name']+" -- "+sn['id'])
+
+
 
 print("===========================================================")
 
 print("===========================================================")
-temp=json.loads(str(computes.data))
+temp = json.loads(str(computes.data))
 
 for something in temp:
-    if something['operating_system'] == 'Oracle Linux':
-        print(something['operating_system']+"----"+something['display_name'])
+    if 'Oracle-Linux-7.9-202' in something['display_name'] :
+        print(something['display_name'] + "----" + something['id'])
 print("===========================================================")
 
 print("Completed at " + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
