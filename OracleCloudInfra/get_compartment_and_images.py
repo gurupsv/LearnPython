@@ -118,8 +118,18 @@ print("===========================================================")
 temp = json.loads(str(computes.data))
 
 for something in temp:
-    if 'Oracle-Linux-7.9-202' in something['display_name'] :
+    if 'Oracle-Linux' in something['display_name'] :
         print(something['display_name'] + "----" + something['id'])
 print("===========================================================")
+
+
+ce_client = oci.container_engine.ContainerEngineClient(config)
+
+# Get available node images
+options = ce_client.get_node_pool_options("all")
+
+# Extract and print image details
+for source in options.data.sources:
+    print(f"Source : {source}")
 
 print("Completed at " + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
