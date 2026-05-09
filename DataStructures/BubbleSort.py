@@ -8,9 +8,8 @@ def main():
 
 def bubblesort(args):
     for i in range(len(args)-1,0,-1):
-        print(i)
         for j in range(i):
-            if args[j]<args[j+1]:
+            if args[j] > args[j+1]:
                 temp=args[j]
                 args[j]=args[j+1]
                 args[j+1]=temp
