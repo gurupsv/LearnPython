@@ -48,18 +48,24 @@ class LinkedList(object):
 
     # TODO : Delete Logic
     def deleteAt(self, index):
+        if index < 0 or index >= self.count:
+            return False
+        if self.head == None:
+            return False
 
-        if index > self.count : return
-        if self.head == None : return
-        else :
+        if index == 0:
+            self.head = self.head.get_next()
+            self.count -= 1
+            return True
+        else:
             tempIdx = 0
-            node=self.head
-            while tempIdx < index-1:
-                node=node.get_next()
+            node = self.head
+            while tempIdx < index - 1:
+                node = node.get_next()
                 tempIdx += 1
             node.set_next(node.get_next().get_next())
             self.count -= 1
-        return True
+            return True
 
     def dump_list(self):
         tempnode = self.head
@@ -73,17 +79,23 @@ def main():
     itemlist = LinkedList()
     itemlist.insert(38)
     itemlist.insert(49)
+    itemlist.insert(15)
     itemlist.dump_list()
 
     print("Item count: ", itemlist.get_count())
-    print("Finding item: ", itemlist.find(38))
-    print("Finding item: ", itemlist.find(78))
+    print("Finding item 38: ", itemlist.find(38))
+    print("Finding item 78: ", itemlist.find(78))
 
+    print("Deleting at index 1...")
     itemlist.deleteAt(1)
+    print("Item count: ", itemlist.get_count())
+    itemlist.dump_list()
+
+    print("Deleting at index 0...")
+    itemlist.deleteAt(0)
     print("Item count: ", itemlist.get_count())
     itemlist.dump_list()
 
     print("Main method completed..")
 
 if __name__ == "__main__" : main()
-

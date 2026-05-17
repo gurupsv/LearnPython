@@ -9,7 +9,7 @@ def main():
 def bubblesort(arg):
     for i in range(len(arg)-1,0,-1):
         for j in range(i):
-            if arg[j]<arg[j+1]:
+            if arg[j] > arg[j+1]:
                 temp=arg[j]
                 arg[j]=arg[j+1]
                 arg[j+1]=temp
